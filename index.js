@@ -1,34 +1,44 @@
-const carrouImg = document.querySelectorAll(".carrousel-item");
+const slides = document.querySelectorAll(".carrousel-item");
+const lightboximg = document.querySelector("#lightbox img");
 const descrip = document.getElementsByTagName("p");
-
+const lightbox = document.getElementById('lightbox');
+const close = document.querySelector(".close");
 let index = 0;
+let time =setInterval(() => {showImg()}, 3000);
 
 function showImg(){  
-    carrouImg[index].classList.remove('active');
+    
+    if (index>=slides.length-1){index=0;};
+    
+    slides[index].classList.remove('active');
     descrip[index].classList.remove('active');
     index++;
-
-    if (index>=carrouImg.length-1){
-        index=0;
-        carrouImg[carrouImg.length-1].classList.remove('active');
-        descrip[carrouImg.length-1].classList.remove('active');
-        carrouImg[index].classList.add("active");
-        descrip[index].classList.add("active")
-    }
-
-    carrouImg[index].classList.add('active');
-    descrip[index].classList.add('active');
-        
-    carrouImg[index].addEventListener("click",(e)=>{
-        console.log(e);
-        clearInterval(t);
-    });
+    
+    slides[slides.length-1].classList.remove('active');
+    descrip[slides.length-1].classList.remove('active');
+    slides[index].classList.add("active");
+    descrip[index].classList.add("active")
+    
+    slides[index].classList.add('active');
+    descrip[index].classList.add('active');  
 };
 
-let t = setInterval(() => {showImg()}, 3000);
+slides.forEach(slide =>{
+  slide.addEventListener("click",(e)=>{
+  const img =e.target.src;
+  lightboximg.src = img;
+  lightbox.classList.add("show");
+  clearInterval(time);
+  })
+});
+
+close.addEventListener("click",()=>{
+lightbox.classList.remove("show");
+time=setInterval( ()=>{showImg()},3000);
+});
 
 
-// close.addEventListener("click",(e)=>{
-//     lightboxBg.remove("show");
-//     setInterval(() => {showImg()}, 3000);
-// })
+
+
+
+

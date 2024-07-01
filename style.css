@@ -25,9 +25,7 @@ h1{
     overflow: hidden;
     visibility: hidden;
 }
-/* .image{
-    position: absolute;
-} */
+
 img{
     
     width: 100%;
@@ -47,29 +45,24 @@ p{
 .active{
    visibility: visible;
 }
-.lightboxBg{
-    visibility: hidden;
-    width: 80%;
-    height: 100%;
-    left: 10%;
-    bottom: 5%;
-    overflow: auto;
-    background: rgba(161, 161, 161, 0.962);
-    position:fixed;
-}
-.show{
-    visibility: visible;
-}
-.lightboxContent{
+#lightbox{
     position: fixed;
-    background: #fefefe;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    max-width: 1200px;
+    top:0;
+    right:0;
+    left: 0;
+    bottom: 0;
+    background: rgba(161, 161, 161, 0.962);
+    display: none;
 }
-.lightboxContent img{
-    width: 100%;
+   
+#lightbox.show{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox img{
+    width: 70%;
 }
 .close{
     color: rgb(12, 0, 0);
